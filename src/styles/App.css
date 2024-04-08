@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid rebeccapurple;
+  /* outline: 1px solid rebeccapurple; */
 }
 
 body {
@@ -11,5 +11,20 @@ body {
 
 #root {
   display: grid;
+  gap: 50px;
+}
+
+.edit-screen {
+  display: grid;
   gap: 20px;
+}
+
+section {
+  background-color: lightgray;
+  display: grid;
+  gap: 15px;
+}
+
+form {
+  display: grid;
 }

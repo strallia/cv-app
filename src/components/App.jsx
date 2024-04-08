@@ -11,9 +11,9 @@ function App() {
     <>
       <h1>CV Builder</h1>
       <div className="edit-screen">
-        EDIT SCREEN
         {sectionTitles.map((title) => {
-          return <Section key={title} title={title} />;
+          const formsList = data[title.toLowerCase()];
+          return <Section key={title} title={title} formsList={formsList} />;
         })}
       </div>
       <div className="preview-screen">PREVIEW SCREEN</div>
