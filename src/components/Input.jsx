@@ -2,7 +2,12 @@ function Input({ label, value }) {
   return (
     <label>
       {label}
-      <input value={value} />
+      <input
+        id={label}
+        type="text"
+        value={value}
+        onChange={() => console.log("changing input value")}
+      />
     </label>
   );
 }
