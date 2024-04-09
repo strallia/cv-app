@@ -1,9 +1,9 @@
 export const data = {
   person: [
     {
-      firstName: "first",
-      lastName: "last",
-      phone: "phone",
+      firstName: "First",
+      lastName: "Last",
+      phone: "phone #",
       email: "email",
     },
   ],

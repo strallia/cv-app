@@ -1,14 +1,14 @@
 function Input({ label, value }) {
   return (
-    <label>
-      {label}
+    <div>
+      <label htmlFor={label}> {label}</label>
       <input
         id={label}
         type="text"
         value={value}
         onChange={() => console.log("changing input value")}
       />
-    </label>
+    </div>
   );
 }
 
