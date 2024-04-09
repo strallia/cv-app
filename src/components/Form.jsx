@@ -1,3 +1,4 @@
+import { Button } from "./Button";
 import { Input } from "./Input";
 
 function Form({ formData }) {
@@ -7,6 +8,7 @@ function Form({ formData }) {
         const [label, value] = input;
         return <Input key={index} label={label} value={value} />;
       })}
+      <Button text="save" />
     </form>
   );
 }
