@@ -1,41 +1,38 @@
-import { Section } from "./Section";
-import { data } from "../data";
 import "../styles/App.css";
 import { useState } from "react";
+import { PreviewSection } from "./PreviewSection";
+import { person, education, experience } from "../data";
+import { EditSection } from "./EditSection";
 
 function App() {
-  const [personData, setPersonData] = useState(data.person);
-  const [educationData, setEducationData] = useState(data.education);
-  const [experienceData, setExperienceData] = useState(data.experience);
+  const [personData, setPersonData] = useState(person);
+  const [educationData, setEducationData] = useState(education);
+  const [experienceData, setExperienceData] = useState(experience);
 
-  const sectionTitles = Object.keys(data).map((title) => {
-    return `${title.charAt(0).toUpperCase()}${title.slice(1)}`;
-  });
+  const sectionTitles = ["person", "education", "experience"];
 
-  function handlePersonDataChange(id, key, newValue) {
-    const updatedPersonData = [{ ...personData[id], [key]: newValue }];
+  function handlePersonDataChange(_, key, newValue) {
+    const updatedPersonData = [{ ...personData[0], [key]: newValue }];
     setPersonData(updatedPersonData);
-    console.log(updatedPersonData);
   }
 
-  function handleEducationDataChange(id, key, newValue) {
-    const educationDataCopy = educationData;
+  function handleEducationDataChange(entryID, key, newValue) {
+    const educationDataCopy = [...educationData];
     const updatedEducationData = educationDataCopy.map((obj) => {
-      if (obj.id === id) obj[key] = newValue;
+      if (obj.id === entryID) obj[key] = newValue;
       return obj;
     });
+    console.log(educationDataCopy[0].id);
     setEducationData(updatedEducationData);
-    console.log(updatedEducationData);
   }
 
-  function handleExperienceDataChange(id, key, newValue) {
-    const experienceDataCopy = experienceData;
+  function handleExperienceDataChange(entryID, key, newValue) {
+    const experienceDataCopy = [...experienceData];
     const updatedExperienceData = experienceDataCopy.map((obj) => {
-      if (obj.id === id) obj[key] = newValue;
+      if (obj.id === entryID) obj[key] = newValue;
       return obj;
     });
     setExperienceData(updatedExperienceData);
-    console.log(updatedExperienceData);
   }
 
   return (
@@ -43,20 +40,25 @@ function App() {
       <h1 className="header__title">CV Builder</h1>
       <div className="edit-screen">
         {sectionTitles.map((title) => {
-          const formsList = data[title.toLowerCase()];
+          let sectionData;
+          let handleInputChange;
 
-          let handleInputChange =
-            title.toLowerCase() === "person"
-              ? handlePersonDataChange
-              : title.toLowerCase() === "education"
-              ? handleEducationDataChange
-              : handleExperienceDataChange;
+          if (title === "person") {
+            sectionData = personData;
+            handleInputChange = handlePersonDataChange;
+          } else if (title === "education") {
+            sectionData = educationData;
+            handleInputChange = handleEducationDataChange;
+          } else if (title === "experience") {
+            sectionData = experienceData;
+            handleInputChange = handleExperienceDataChange;
+          }
 
           return (
-            <Section
+            <EditSection
               key={title}
               title={title}
-              list={formsList}
+              sectionData={sectionData}
               handleInputChange={handleInputChange}
             />
           );
@@ -70,8 +72,8 @@ function App() {
           <p>{personData[0].phone}</p>
           <p>{personData[0].email}</p>
         </header>
-        <Section title="education" list={educationData} isForPreview={true} />
-        <Section title="experience" list={experienceData} isForPreview={true} />
+        <PreviewSection title="education" sectionData={educationData} />
+        <PreviewSection title="experience" sectionData={experienceData} />
       </div>
     </>
   );

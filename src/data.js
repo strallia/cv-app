@@ -1,47 +1,41 @@
-export const data = {
-  person: [
-    {
-      id: 0,
-      firstName: null,
-      lastName: null,
-      phone: null,
-      email: null,
-    },
-  ],
-  education: [
-    {
-      id: 0,
-      degree: null,
-      school: null,
-      startYear: null,
-      endYear: null,
-      description: null,
-    },
-    {
-      id: 1,
-      degree: null,
-      school: null,
-      startYear: null,
-      endYear: null,
-      description: null,
-    },
-  ],
-  experience: [
-    {
-      id: 0,
-      jobTitle: null,
-      company: null,
-      startYear: null,
-      endYear: null,
-      description: null,
-    },
-    {
-      id: 1,
-      jobTitle: null,
-      company: null,
-      startYear: null,
-      endYear: null,
-      description: null,
-    },
-  ],
-};
+const person = [
+  {
+    id: crypto.randomUUID(),
+    firstName: null,
+    lastName: null,
+    phone: null,
+    email: null,
+  },
+];
+
+const education = [
+  {
+    id: crypto.randomUUID(),
+    degree: null,
+    school: null,
+    startYear: null,
+    endYear: null,
+    description: null,
+  },
+  {
+    id: crypto.randomUUID(),
+    degree: null,
+    school: null,
+    startYear: null,
+    endYear: null,
+    description: null,
+  },
+];
+
+const experience = [
+  {
+    id: crypto.randomUUID(),
+    jobTitle: null,
+    company: null,
+    startYear: null,
+    endYear: null,
+    description: null,
+  },
+];
+
+export { person, education, experience };

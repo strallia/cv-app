@@ -1,20 +1,20 @@
 import { useState } from "react";
 
-function Input({ formID, label, handleInputChange }) {
+function Input({ inputLabel, handleInputChange, entryID }) {
   const [value, setValue] = useState("");
 
-  if (label === "id") return;
+  if (inputLabel === "id") return;
 
   return (
     <div>
-      <label htmlFor={label}> {label}</label>
+      <label htmlFor={inputLabel}>{inputLabel}</label>
       <input
-        id={label}
+        id={inputLabel}
         type="text"
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
-          handleInputChange(formID, label, e.target.value);
+          handleInputChange(entryID, inputLabel, e.target.value);
         }}
       />
     </div>

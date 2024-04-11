@@ -1,18 +1,17 @@
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-function Form({ formData, handleInputChange }) {
-  const formID = formData.id;
+function Form({ entry, handleInputChange }) {
+  const entryID = entry.id;
   return (
     <form>
-      {Object.entries(formData).map((input, index) => {
-        const [label] = input;
+      {Object.keys(entry).map((inputLabel, index) => {
         return (
           <Input
             key={index}
-            formID={formID}
-            label={label}
+            inputLabel={inputLabel}
             handleInputChange={handleInputChange}
+            entryID={entryID}
           />
         );
       })}
