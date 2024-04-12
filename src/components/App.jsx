@@ -1,69 +1,51 @@
 import "../styles/App.css";
 import { useState } from "react";
 import { PreviewSection } from "./PreviewSection";
-import { person, education, experience } from "../data";
+import { initialData } from "../initialData";
 import { EditSection } from "./EditSection";
 
 function App() {
-  const [personData, setPersonData] = useState(person);
-  const [educationData, setEducationData] = useState(education);
-  const [experienceData, setExperienceData] = useState(experience);
+  const [data, setData] = useState(initialData);
 
   const sectionTitles = ["person", "education", "experience"];
 
-  function handlePersonDataChange(_, key, newValue) {
-    const updatedPersonData = [{ ...personData[0], [key]: newValue }];
-    setPersonData(updatedPersonData);
+  function findSectionEntries(sectionTitle) {
+    return data.filter((entry) => entry.sectionTitle === sectionTitle);
   }
+  const personEntries = findSectionEntries("person");
+  const educationEntries = findSectionEntries("education");
+  const experienceEntries = findSectionEntries("experience");
 
-  function handleEducationDataChange(entryID, key, newValue) {
-    const educationDataCopy = [...educationData];
-    const updatedEducationData = educationDataCopy.map((obj) => {
-      if (obj.id === entryID) obj[key] = newValue;
-      return obj;
-    });
-    setEducationData(updatedEducationData);
-  }
+  const { firstName, lastName, phone, email } = personEntries[0];
 
-  function handleExperienceDataChange(entryID, key, newValue) {
-    const experienceDataCopy = [...experienceData];
-    const updatedExperienceData = experienceDataCopy.map((obj) => {
-      if (obj.id === entryID) obj[key] = newValue;
-      return obj;
+  function handleInputOnChange(entryID, key, newValue) {
+    const dataCopy = [...data];
+    const updatedData = dataCopy.map((entry) => {
+      if (entry.entryID === entryID) entry[key] = newValue;
+      return entry;
     });
-    setExperienceData(updatedExperienceData);
+    setData(updatedData);
   }
 
   return (
     <>
       <h1 className="header__title">CV Builder</h1>
       <div className="edit-screen">
-        {sectionTitles.map((title) => {
-          let sectionData;
-          let setSectionData;
-          let handleInputChange;
-
-          if (title === "person") {
-            sectionData = personData;
-            setSectionData = setPersonData;
-            handleInputChange = handlePersonDataChange;
-          } else if (title === "education") {
-            sectionData = educationData;
-            setSectionData = setEducationData;
-            handleInputChange = handleEducationDataChange;
-          } else if (title === "experience") {
-            sectionData = experienceData;
-            setSectionData = setExperienceData;
-            handleInputChange = handleExperienceDataChange;
-          }
-
+        {sectionTitles.map((sectionTitle, index) => {
+          let sectionEntries;
+          if (sectionTitle === "person") sectionEntries = personEntries;
+          else if (sectionTitle === "education")
+            sectionEntries = educationEntries;
+          else if (sectionTitle === "experience")
+            sectionEntries = experienceEntries;
           return (
             <EditSection
-              key={title}
-              title={title}
-              sectionData={sectionData}
-              setSectionData={setSectionData}
-              handleInputChange={handleInputChange}
+              key={index}
+              sectionTitle={sectionTitle}
+              sectionEntries={sectionEntries}
+              data={data}
+              setData={setData}
+              handleInputOnChange={handleInputOnChange}
             />
           );
         })}
@@ -71,13 +53,13 @@ function App() {
       <div className="preview-screen">
         <header className="preview-screen__header">
           <h1>
-            {personData[0].firstName} {personData[0].lastName}
+            {firstName} {lastName}
           </h1>
-          <p>{personData[0].phone}</p>
-          <p>{personData[0].email}</p>
+          <p>{phone}</p>
+          <p>{email}</p>
         </header>
-        <PreviewSection title="education" sectionData={educationData} />
-        <PreviewSection title="experience" sectionData={experienceData} />
+        <PreviewSection title="education" sectionEntries={educationEntries} />
+        <PreviewSection title="experience" sectionEntries={experienceEntries} />
       </div>
     </>
   );

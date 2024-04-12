@@ -1,41 +1,34 @@
-function Button({
-  text,
-  title,
-  sectionData,
-  setSectionData,
-  entryID,
-  isVisible,
-}) {
-  if (title === "person") return;
-
+function Button({ type, data, setData, sectionTitle, entryID, isVisible }) {
   function handleAddButtonClick() {
     let keyNames =
-      title === "education" ? ["degree", "school"] : ["jobTitle", "company"];
+      sectionTitle === "education"
+        ? ["degree", "school"]
+        : ["jobTitle", "company"];
     keyNames.push("startYear", "endYear", "description");
 
-    const newEntry = { id: crypto.randomUUID() };
-    keyNames.forEach((key) => {
-      newEntry[key] = null;
-    });
+    const newEntry = { entryID: crypto.randomUUID(), sectionTitle };
+    keyNames.forEach((key) => (newEntry[key] = null));
 
-    const sectionDataCopy = [...sectionData];
-    sectionDataCopy.push(newEntry);
-    setSectionData(sectionDataCopy);
+    const dataCopy = [...data];
+    dataCopy.push(newEntry);
+    setData(dataCopy);
   }
 
   function handleDeleteButtonClick() {
-    const sectionDataCopy = [...sectionData];
+    const dataCopy = [...data];
 
-    const indexOfEntryToDelete = sectionDataCopy.findIndex(
-      (entry) => entry.id === entryID
+    const indexOfEntryToDelete = dataCopy.findIndex(
+      (entry) => entry.entryID === entryID
     );
-    sectionDataCopy.splice(indexOfEntryToDelete, 1);
+    dataCopy.splice(indexOfEntryToDelete, 1);
 
-    setSectionData(sectionDataCopy);
+    setData(dataCopy);
   }
 
   const onClickHandler =
-    text === "add" ? handleAddButtonClick : handleDeleteButtonClick;
+    type === "add" ? handleAddButtonClick : handleDeleteButtonClick;
+
+  if (sectionTitle === "person") return;
 
   return (
     <button
@@ -44,7 +37,7 @@ function Button({
         onClickHandler();
       }}
     >
-      {text}
+      {type}
     </button>
   );
 }

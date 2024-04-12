@@ -1,35 +1,31 @@
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-function Form({
-  entry,
-  handleInputChange,
-  sectionData,
-  setSectionData,
-  title,
-}) {
-  const entryID = entry.id;
+function Form({ entry, handleInputOnChange, data, setData }) {
+  const { entryID, sectionTitle } = entry;
+
+  const modifiedEntry = { ...entry };
+  delete modifiedEntry.entryID;
+  delete modifiedEntry.sectionTitle;
+
+  const entryKeyNames = Object.keys(modifiedEntry);
+
   return (
     <form>
-      {Object.keys(entry).map((inputLabel, index) => {
+      {entryKeyNames.map((keyName, index) => {
         return (
           <Input
             key={index}
-            inputLabel={inputLabel}
-            handleInputChange={handleInputChange}
+            labelText={keyName}
+            handleInputOnChange={handleInputOnChange}
             entryID={entryID}
           />
         );
       })}
-      {title !== "person" && (
-        <Button
-          text="delete"
-          entryID={entryID}
-          sectionData={sectionData}
-          setSectionData={setSectionData}
-        />
+      {sectionTitle !== "person" && (
+        <Button type="delete" entryID={entryID} data={data} setData={setData} />
       )}
-      <Button text="save" />
+      <Button type="save" />
     </form>
   );
 }

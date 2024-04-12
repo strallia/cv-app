@@ -2,31 +2,31 @@ import { Button } from "./Button";
 import { Form } from "./Form";
 
 function EditSection({
-  title,
-  sectionData,
-  setSectionData,
-  handleInputChange,
+  sectionTitle,
+  sectionEntries,
+  data,
+  setData,
+  handleInputOnChange,
 }) {
   return (
     <section className="edit-section">
-      <h3>{title}</h3>
-      {sectionData.map((entry) => {
+      <h3>{sectionTitle}</h3>
+      {sectionEntries.map((entry) => {
         return (
           <Form
-            key={entry.id}
+            key={entry.entryID}
             entry={entry}
-            handleInputChange={handleInputChange}
-            sectionData={sectionData}
-            setSectionData={setSectionData}
-            title={title}
+            handleInputOnChange={handleInputOnChange}
+            data={data}
+            setData={setData}
           />
         );
       })}
       <Button
-        text="add"
-        title={title}
-        sectionData={sectionData}
-        setSectionData={setSectionData}
+        type="add"
+        sectionTitle={sectionTitle}
+        data={data}
+        setData={setData}
       />
     </section>
   );

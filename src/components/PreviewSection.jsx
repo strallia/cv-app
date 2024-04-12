@@ -1,26 +1,31 @@
-function PreviewSection({ title, sectionData }) {
-  const entriesConvertedToValuesArr = sectionData.map((entry) => {
-    const entryCopy = { ...entry };
-    delete entryCopy.id;
-    return Object.values(entryCopy);
+function PreviewSection({ title, sectionEntries }) {
+  const modifiedEntries = sectionEntries.map((entry) => modifyEntry(entry));
+
+  // show title if at least one value amongst all entries is not null
+  const showTitle = modifiedEntries.some((entry) => {
+    const values = Object.values(entry);
+    return values.some((value) => value !== null);
   });
 
-  // only show title if entries have data
-  let hasTitle = entriesConvertedToValuesArr.some((entry) => {
-    const entryWithoutNulls = entry.filter((value) => value);
-    return entryWithoutNulls.length > 0;
-  });
+  function modifyEntry(entry) {
+    const modifiedEntry = { ...entry };
+    delete modifiedEntry.entryID;
+    delete modifiedEntry.sectionTitle;
+    return modifiedEntry;
+  }
 
   return (
     <section className="preview-section">
-      {hasTitle && <h3>{title}</h3>}
+      {showTitle && <h3>{title}</h3>}
       {
-        // display values in section
-        entriesConvertedToValuesArr.map((entry, entryIndex) => {
-          const valuesConvertedToComponents = entry.map((value, valueIndex) => {
-            return <p key={valueIndex}>{value}</p>;
+        // display values in each section
+        sectionEntries.map((entry) => {
+          const modifiedEntry = modifyEntry(entry);
+          const values = Object.values(modifiedEntry);
+          const valuesAsComponents = values.map((value, index) => {
+            return <p key={index}>{value}</p>;
           });
-          return <div key={entryIndex}>{valuesConvertedToComponents}</div>;
+          return <div key={entry.entryID}>{valuesAsComponents}</div>;
         })
       }
     </section>
