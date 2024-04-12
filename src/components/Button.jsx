@@ -1,4 +1,12 @@
-function Button({ type, data, setData, sectionTitle, entryID, isVisible }) {
+function Button({
+  type,
+  data,
+  setData,
+  sectionTitle,
+  entryID,
+  setIsCollapsed,
+  isVisible,
+}) {
   function handleAddButtonClick() {
     let keyNames =
       sectionTitle === "education"
@@ -25,8 +33,14 @@ function Button({ type, data, setData, sectionTitle, entryID, isVisible }) {
     setData(dataCopy);
   }
 
-  const onClickHandler =
-    type === "add" ? handleAddButtonClick : handleDeleteButtonClick;
+  function handleSaveButtonClick() {
+    setIsCollapsed(true);
+  }
+
+  let onClickHandler;
+  if (type === "add") onClickHandler = handleAddButtonClick;
+  else if (type === "delete") onClickHandler = handleDeleteButtonClick;
+  else if (type === "save") onClickHandler = handleSaveButtonClick;
 
   if (sectionTitle === "person") return;
 
