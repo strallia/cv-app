@@ -4,7 +4,7 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 
 function Form({ entry, handleInputOnChange, data, setData }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const { entryID, sectionTitle } = entry;
   const modifiedEntry = modifyEntry(entry);
@@ -41,10 +41,19 @@ function Form({ entry, handleInputOnChange, data, setData }) {
           ? showCollapsedView(key, value, index)
           : showExpandedView(key, value, index);
       })}
-      {isCollapsed && sectionTitle !== "person" && (
-        <Button type="delete" entryID={entryID} data={data} setData={setData} />
+      {isCollapsed && (
+        <div>
+          {sectionTitle !== "person" && (
+            <Button
+              type="delete"
+              entryID={entryID}
+              data={data}
+              setData={setData}
+            />
+          )}
+          <Button type="edit" setIsCollapsed={setIsCollapsed} />
+        </div>
       )}
-      {isCollapsed && <Button type="edit" setIsCollapsed={setIsCollapsed} />}
       {!isCollapsed && <Button type="save" setIsCollapsed={setIsCollapsed} />}
     </form>
   );
