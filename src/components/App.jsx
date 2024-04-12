@@ -22,7 +22,6 @@ function App() {
       if (obj.id === entryID) obj[key] = newValue;
       return obj;
     });
-    console.log(educationDataCopy[0].id);
     setEducationData(updatedEducationData);
   }
 

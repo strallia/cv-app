@@ -10,12 +10,15 @@ function EditSection({
   return (
     <section className="edit-section">
       <h3>{title}</h3>
-      {sectionData.map((entry, index) => {
+      {sectionData.map((entry) => {
         return (
           <Form
-            key={index}
+            key={entry.id}
             entry={entry}
             handleInputChange={handleInputChange}
+            sectionData={sectionData}
+            setSectionData={setSectionData}
+            title={title}
           />
         );
       })}

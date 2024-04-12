@@ -1,4 +1,11 @@
-function Button({ text, title, sectionData, setSectionData, isVisible }) {
+function Button({
+  text,
+  title,
+  sectionData,
+  setSectionData,
+  entryID,
+  isVisible,
+}) {
   if (title === "person") return;
 
   function handleAddButtonClick() {
@@ -16,14 +23,30 @@ function Button({ text, title, sectionData, setSectionData, isVisible }) {
     setSectionData(sectionDataCopy);
   }
 
-  function handleSaveButtonClick() {
-    // TODO: write this save button handler function
+  function handleDeleteButtonClick() {
+    const sectionDataCopy = [...sectionData];
+
+    const indexOfEntryToDelete = sectionDataCopy.findIndex(
+      (entry) => entry.id === entryID
+    );
+    sectionDataCopy.splice(indexOfEntryToDelete, 1);
+
+    setSectionData(sectionDataCopy);
   }
 
   const onClickHandler =
-    text === "add" ? handleAddButtonClick : handleSaveButtonClick;
+    text === "add" ? handleAddButtonClick : handleDeleteButtonClick;
 
-  return <button onClick={onClickHandler}>{text}</button>;
+  return (
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        onClickHandler();
+      }}
+    >
+      {text}
+    </button>
+  );
 }
 
 export { Button };

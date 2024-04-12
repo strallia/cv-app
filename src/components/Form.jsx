@@ -1,7 +1,13 @@
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-function Form({ entry, handleInputChange }) {
+function Form({
+  entry,
+  handleInputChange,
+  sectionData,
+  setSectionData,
+  title,
+}) {
   const entryID = entry.id;
   return (
     <form>
@@ -15,6 +21,14 @@ function Form({ entry, handleInputChange }) {
           />
         );
       })}
+      {title !== "person" && (
+        <Button
+          text="delete"
+          entryID={entryID}
+          sectionData={sectionData}
+          setSectionData={setSectionData}
+        />
+      )}
       <Button text="save" />
     </form>
   );
