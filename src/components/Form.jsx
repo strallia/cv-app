@@ -43,6 +43,7 @@ function Form({ entry, handleInputOnChange, data, setData }) {
       {isCollapsed && sectionTitle !== "person" && (
         <Button type="delete" entryID={entryID} data={data} setData={setData} />
       )}
+      {isCollapsed && <Button type="edit" setIsCollapsed={setIsCollapsed} />}
       {!isCollapsed && <Button type="save" setIsCollapsed={setIsCollapsed} />}
     </form>
   );
