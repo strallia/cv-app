@@ -41,16 +41,20 @@ function App() {
       <div className="edit-screen">
         {sectionTitles.map((title) => {
           let sectionData;
+          let setSectionData;
           let handleInputChange;
 
           if (title === "person") {
             sectionData = personData;
+            setSectionData = setPersonData;
             handleInputChange = handlePersonDataChange;
           } else if (title === "education") {
             sectionData = educationData;
+            setSectionData = setEducationData;
             handleInputChange = handleEducationDataChange;
           } else if (title === "experience") {
             sectionData = experienceData;
+            setSectionData = setExperienceData;
             handleInputChange = handleExperienceDataChange;
           }
 
@@ -59,6 +63,7 @@ function App() {
               key={title}
               title={title}
               sectionData={sectionData}
+              setSectionData={setSectionData}
               handleInputChange={handleInputChange}
             />
           );
