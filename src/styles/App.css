@@ -31,6 +31,10 @@ body {
   gap: 15px;
 }
 
+.edit-section {
+  padding: 10px;
+}
+
 form {
   display: grid;
 }
@@ -41,4 +45,18 @@ form {
 
 .preview-screen__header {
   background-color: cornflowerblue;
+}
+
+.form--collapsed {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form--collapsed:hover {
+  background-color: cornflowerblue;
+}
+
+.form--bg-color {
+  background-color: whitesmoke;
 }

@@ -6,57 +6,52 @@ import { Input } from "./Input";
 function Form({ entry, handleInputOnChange, data, setData }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  const { entryID, sectionTitle } = entry;
+  const { entryID, degree, school, jobTitle, company } = entry;
   const modifiedEntry = modifyEntry(entry);
   const entryKeyValuePairs = Object.entries(modifiedEntry);
 
-  function showCollapsedView(key, value, index) {
-    if (
-      key === "degree" ||
-      key === "school" ||
-      key === "jobTitle" ||
-      key === "company"
-    ) {
-      return <p key={index}>{value}</p>;
-    }
-  }
-
-  function showExpandedView(key, value, index) {
+  function showCollapsedForm() {
+    const buttonText = [degree, school, jobTitle, company];
+    const textAsComponents = buttonText.map((string, index) => (
+      <p key={index}>{string}</p>
+    ));
     return (
-      <Input
-        key={index}
-        labelText={key}
-        handleInputOnChange={handleInputOnChange}
-        entryID={entryID}
-        initialValue={value}
-      />
+      <div
+        onClick={() => setIsCollapsed(false)}
+        className="form--collapsed form--bg-color"
+      >
+        <div>{textAsComponents}</div>
+        <Button type="delete" entryID={entryID} data={data} setData={setData} />
+      </div>
     );
   }
 
-  return (
-    <form>
-      {entryKeyValuePairs.map((keyValuePair, index) => {
-        const [key, value] = keyValuePair;
-        return isCollapsed
-          ? showCollapsedView(key, value, index)
-          : showExpandedView(key, value, index);
-      })}
-      {isCollapsed && (
-        <div>
-          {sectionTitle !== "person" && (
-            <Button
-              type="delete"
-              entryID={entryID}
-              data={data}
-              setData={setData}
-            />
-          )}
-          <Button type="edit" setIsCollapsed={setIsCollapsed} />
-        </div>
-      )}
-      {!isCollapsed && <Button type="save" setIsCollapsed={setIsCollapsed} />}
-    </form>
-  );
+  function showExpandedForm() {
+    const arrOfInputs = entryKeyValuePairs.map((keyValuePair, index) => {
+      const [key, value] = keyValuePair;
+      return (
+        <Input
+          key={index}
+          labelText={key}
+          handleInputOnChange={handleInputOnChange}
+          entryID={entryID}
+          initialValue={value}
+        />
+      );
+    });
+    return (
+      <div className="form--expanded form--bg-color">
+        {arrOfInputs}
+        <Button
+          type="save"
+          buttonText={["save"]}
+          setIsCollapsed={setIsCollapsed}
+        />
+      </div>
+    );
+  }
+
+  return <form>{isCollapsed ? showCollapsedForm() : showExpandedForm()}</form>;
 }
 
 export { Form };

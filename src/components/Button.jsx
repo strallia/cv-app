@@ -37,16 +37,10 @@ function Button({
     setIsCollapsed(true);
   }
 
-  function handleEditButtonClick() {
-    // expand form
-    setIsCollapsed(false);
-  }
-
   let onClickHandler;
   if (type === "add") onClickHandler = handleAddButtonClick;
   else if (type === "delete") onClickHandler = handleDeleteButtonClick;
   else if (type === "save") onClickHandler = handleSaveButtonClick;
-  else if (type === "edit") onClickHandler = handleEditButtonClick;
 
   if (sectionTitle === "person") return;
 

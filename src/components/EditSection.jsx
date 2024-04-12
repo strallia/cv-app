@@ -24,6 +24,7 @@ function EditSection({
       })}
       <Button
         type="add"
+        buttonText={["add"]}
         sectionTitle={sectionTitle}
         data={data}
         setData={setData}
