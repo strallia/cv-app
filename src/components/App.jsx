@@ -1,7 +1,7 @@
 import "../styles/App.css";
 import { useState } from "react";
 import { PreviewSection } from "./PreviewSection";
-import { initialData } from "../initialData";
+import { initialData } from "../scripts/initialData";
 import { EditSection } from "./EditSection";
 
 function App() {

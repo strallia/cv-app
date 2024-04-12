@@ -1,13 +1,10 @@
+import { modifyEntry } from "../scripts/helperFunctions";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
 function Form({ entry, handleInputOnChange, data, setData }) {
   const { entryID, sectionTitle } = entry;
-
-  const modifiedEntry = { ...entry };
-  delete modifiedEntry.entryID;
-  delete modifiedEntry.sectionTitle;
-
+  const modifiedEntry = modifyEntry(entry);
   const entryKeyNames = Object.keys(modifiedEntry);
 
   return (

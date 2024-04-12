@@ -1,3 +1,5 @@
+import { modifyEntry } from "../scripts/helperFunctions";
+
 function PreviewSection({ title, sectionEntries }) {
   const modifiedEntries = sectionEntries.map((entry) => modifyEntry(entry));
 
@@ -6,13 +8,6 @@ function PreviewSection({ title, sectionEntries }) {
     const values = Object.values(entry);
     return values.some((value) => value !== null);
   });
-
-  function modifyEntry(entry) {
-    const modifiedEntry = { ...entry };
-    delete modifiedEntry.entryID;
-    delete modifiedEntry.sectionTitle;
-    return modifiedEntry;
-  }
 
   return (
     <section className="preview-section">
