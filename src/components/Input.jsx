@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function Input({ labelText, handleInputOnChange, entryID }) {
-  const [value, setValue] = useState("");
+function Input({ labelText, handleInputOnChange, entryID, initialValue }) {
+  const [value, setValue] = useState(initialValue);
 
   if (labelText === "id") return;
 

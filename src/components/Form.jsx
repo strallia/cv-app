@@ -21,13 +21,14 @@ function Form({ entry, handleInputOnChange, data, setData }) {
     }
   }
 
-  function showExpandedView(key, index) {
+  function showExpandedView(key, value, index) {
     return (
       <Input
         key={index}
         labelText={key}
         handleInputOnChange={handleInputOnChange}
         entryID={entryID}
+        initialValue={value}
       />
     );
   }
@@ -38,7 +39,7 @@ function Form({ entry, handleInputOnChange, data, setData }) {
         const [key, value] = keyValuePair;
         return isCollapsed
           ? showCollapsedView(key, value, index)
-          : showExpandedView(key, index);
+          : showExpandedView(key, value, index);
       })}
       {isCollapsed && sectionTitle !== "person" && (
         <Button type="delete" entryID={entryID} data={data} setData={setData} />
