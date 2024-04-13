@@ -33,6 +33,7 @@ body {
 
 .edit-section {
   padding: 10px;
+  height: min-content;
 }
 
 form {
