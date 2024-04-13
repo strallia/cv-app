@@ -1,6 +1,6 @@
 # CV Application Generator
 
-<!-- [Live Demo]() -->
+[Live Demo](https://661b1a670e8b6ef4b4e54b48--musical-swan-ac0937.netlify.app/)
 
 ## Purpose
 
