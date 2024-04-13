@@ -8,10 +8,11 @@ function EditSection({
   data,
   setData,
   handleInputOnChange,
-  isExpandedSection,
+  expandedEditSection,
   setExpandedEditSection,
 }) {
   const [expandedEntryID, setExpandedEntryID] = useState("");
+  const isExpandedSection = sectionTitle === expandedEditSection;
 
   function showExpandedSection() {
     const forms = sectionEntries.map((entry) => {
@@ -43,12 +44,18 @@ function EditSection({
     );
   }
 
+  function handleEditSectionClick(e) {
+    if (e.target !== e.currentTarget) return;
+    if (expandedEditSection === sectionTitle) return setExpandedEditSection("");
+    setExpandedEditSection(sectionTitle);
+  }
+
   return (
     <section
       className="edit-section"
-      onClick={() => setExpandedEditSection(sectionTitle)}
+      onClick={(e) => handleEditSectionClick(e)}
     >
-      <h3>{sectionTitle}</h3>
+      {sectionTitle}
       {isExpandedSection && showExpandedSection()}
     </section>
   );

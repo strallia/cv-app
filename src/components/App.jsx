@@ -7,7 +7,6 @@ import { EditSection } from "./EditSection";
 function App() {
   const [data, setData] = useState(initialData);
   const [expandedEditSection, setExpandedEditSection] = useState("");
-
   const sectionTitles = ["person", "education", "experience"];
 
   function findSectionEntries(sectionTitle) {
@@ -16,7 +15,6 @@ function App() {
   const personEntries = findSectionEntries("person");
   const educationEntries = findSectionEntries("education");
   const experienceEntries = findSectionEntries("experience");
-
   const { firstName, lastName, phone, email } = personEntries[0];
 
   function handleInputOnChange(entryID, key, newValue) {
@@ -40,8 +38,6 @@ function App() {
           else if (sectionTitle === "experience")
             sectionEntries = experienceEntries;
 
-          const isExpandedSection = sectionTitle === expandedEditSection;
-
           return (
             <EditSection
               key={index}
@@ -50,7 +46,7 @@ function App() {
               data={data}
               setData={setData}
               handleInputOnChange={handleInputOnChange}
-              isExpandedSection={isExpandedSection}
+              expandedEditSection={expandedEditSection}
               setExpandedEditSection={setExpandedEditSection}
             />
           );

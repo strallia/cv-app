@@ -34,6 +34,7 @@ body {
 .edit-section {
   padding: 10px;
   height: min-content;
+  cursor: pointer;
 }
 
 form {
