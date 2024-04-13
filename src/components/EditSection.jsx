@@ -52,14 +52,14 @@ function EditSection({
   }
 
   return (
-    <button
+    <section
       className="edit-section"
       onClick={(e) => handleEditSectionClick(e)}
       tabIndex="0"
     >
       {sectionTitle}
       {isExpandedSection && showExpandedSection()}
-    </button>
+    </section>
   );
 }
 
