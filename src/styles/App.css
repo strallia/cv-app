@@ -191,6 +191,8 @@ label {
 input {
   padding: 3px 7px;
   width: 100%;
+  border-radius: 5px;
+  border: 2px solid rgba(var(--light-gray), 1);
 }
 
 .form--collapsed:hover {
