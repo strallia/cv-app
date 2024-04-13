@@ -47,8 +47,22 @@ form {
   background-color: lightgray;
 }
 
-.preview-screen__header {
+.preview-header {
   background-color: cornflowerblue;
+}
+
+.preview-header__phone,
+.preview-header__email {
+  display: flex;
+  align-items: center;
+}
+
+.preview-header__phone::before {
+  content: url("../assets/phone.svg");
+}
+
+.preview-header__email::before {
+  content: url("../assets/email.svg");
 }
 
 .form--collapsed {
