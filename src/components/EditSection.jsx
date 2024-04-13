@@ -47,6 +47,7 @@ function EditSection({
   function handleEditSectionClick(e) {
     if (e.target !== e.currentTarget) return;
     if (expandedEditSection === sectionTitle) return setExpandedEditSection("");
+    setExpandedEntryID("");
     setExpandedEditSection(sectionTitle);
   }
 
