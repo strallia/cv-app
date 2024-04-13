@@ -54,14 +54,19 @@ function App() {
       </div>
       <div className="preview-screen">
         <header className="preview-header">
-          <h1>
+          <h1 className="preview-header__title">
             {firstName} {lastName}
           </h1>
           <p className="preview-header__phone">{phone}</p>
           <p className="preview-header__email">{email}</p>
         </header>
-        <PreviewSection title="education" sectionEntries={educationEntries} />
-        <PreviewSection title="experience" sectionEntries={experienceEntries} />
+        <div className="preview-sections-container">
+          <PreviewSection title="education" sectionEntries={educationEntries} />
+          <PreviewSection
+            title="experience"
+            sectionEntries={experienceEntries}
+          />
+        </div>
       </div>
     </>
   );

@@ -58,7 +58,9 @@ function EditSection({
   return (
     <div>
       <section
-        className="edit-section"
+        className={`edit-section ${
+          isExpandedSection ? "edit-section--expanded" : ""
+        }`}
         onClick={handleEditSectionClick}
         tabIndex="0"
       >

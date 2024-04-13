@@ -11,7 +11,7 @@ function PreviewSection({ title, sectionEntries }) {
 
   return (
     <section className="preview-section">
-      {showTitle && <h3>{title}</h3>}
+      {showTitle && <h3 className="preview-section__title">{title}</h3>}
       {
         // display values in each section
         sectionEntries.map((entry) => {

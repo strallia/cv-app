@@ -24,7 +24,7 @@ function Form({
     return (
       <div
         onClick={() => setExpandedEntryID(entryID)}
-        className="form--collapsed form--bg-color"
+        className="form form--collapsed form--bg-color"
         tabIndex="0"
       >
         <div>{textAsComponents}</div>
