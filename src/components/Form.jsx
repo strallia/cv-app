@@ -22,13 +22,13 @@ function Form({
       <p key={index}>{string}</p>
     ));
     return (
-      <div
+      <button
         onClick={() => setExpandedEntryID(entryID)}
         className="form--collapsed form--bg-color"
       >
         <div>{textAsComponents}</div>
         <Button type="delete" entryID={entryID} data={data} setData={setData} />
-      </div>
+      </button>
     );
   }
 

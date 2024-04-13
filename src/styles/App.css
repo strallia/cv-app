@@ -35,6 +35,7 @@ body {
   padding: 10px;
   height: min-content;
   cursor: pointer;
+  border: none;
 }
 
 form {
@@ -53,6 +54,7 @@ form {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  border: none;
 }
 
 .form--collapsed:hover {
