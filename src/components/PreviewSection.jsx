@@ -16,11 +16,19 @@ function PreviewSection({ title, sectionEntries }) {
         // display values in each section
         sectionEntries.map((entry) => {
           const modifiedEntry = modifyEntry(entry);
-          const values = Object.values(modifiedEntry);
-          const valuesAsComponents = values.map((value, index) => {
-            return <p key={index}>{value}</p>;
+          const entries = Object.entries(modifiedEntry);
+          const valuesAsComponents = entries.map(([key, value], index) => {
+            return (
+              <p key={index} className={`preview-section__entry--${key}`}>
+                {value}
+              </p>
+            );
           });
-          return <div key={entry.entryID}>{valuesAsComponents}</div>;
+          return (
+            <div key={entry.entryID} className="preview-section__entry">
+              {valuesAsComponents}
+            </div>
+          );
         })
       }
     </section>

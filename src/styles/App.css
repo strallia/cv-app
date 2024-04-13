@@ -50,12 +50,12 @@ body {
 .preview-sections-container {
   padding: 20px;
   display: grid;
-  row-gap: 20px;
+  row-gap: 25px;
 }
 
 .preview-section {
   display: grid;
-  gap: 10px;
+  gap: 15px;
 }
 
 .preview-section__title,
@@ -259,6 +259,52 @@ input {
   box-shadow: 0 0 5px 5px rgba(var(--charcoal), 0.1);
 }
 
+.preview-section__entry {
+  display: grid;
+  row-gap: 5px;
+  align-items: center;
+}
+
+.preview-section__entry--startYear {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  justify-self: end;
+  padding-right: 3px;
+}
+
+.preview-section__entry--endYear {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+
+.preview-section__entry--endYear,
+.preview-section__entry--startYear {
+  width: max-content;
+}
+
+.preview-section__entry--endYear::before {
+  content: "- ";
+}
+
+.preview-section__entry--degree,
+.preview-section__entry--jobTitle {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.preview-section__entry--school,
+.preview-section__entry--company {
+  grid-column: 1/4;
+  grid-row: 2/3;
+}
+
+.preview-section__entry--description {
+  grid-column: 1/4;
+  grid-row: 3/4;
+}
+
 @media (min-width: 650px) {
   body {
     padding: 0;
@@ -292,5 +338,28 @@ input {
   }
   .preview-header__email {
     justify-self: start;
+  }
+  .preview-section__entry {
+    grid-template-columns: 0.5fr 0.5fr 2fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 3px;
+  }
+  .preview-section__entry--startYear {
+    grid-column: 1/2;
+  }
+  .preview-section__entry--endYear {
+    grid-column: 2/3;
+    margin-right: 20px;
+  }
+  .preview-section__entry--degree,
+  .preview-section__entry--jobTitle {
+    grid-column: 3/4;
+  }
+  .preview-section__entry--school,
+  .preview-section__entry--company {
+    grid-column: 3/4;
+  }
+  .preview-section__entry--description {
+    grid-column: 3/4;
   }
 }
