@@ -10,7 +10,7 @@ function Form({
   isExpanded,
   setExpandedEntryID,
 }) {
-  const { entryID, degree, school, jobTitle, company } = entry;
+  const { entryID, sectionTitle, degree, school, jobTitle, company } = entry;
   const modifiedEntry = modifyEntry(entry);
   const entryKeyValuePairs = Object.entries(modifiedEntry);
 
@@ -48,14 +48,18 @@ function Form({
     return (
       <div className="form--expanded form--bg-color">
         {arrOfInputs}
-        <Button
-          type="save"
-          buttonText={["save"]}
-          setExpandedEntryID={setExpandedEntryID}
-        />
+        {sectionTitle !== "person" && (
+          <Button
+            type="save"
+            buttonText={["save"]}
+            setExpandedEntryID={setExpandedEntryID}
+          />
+        )}
       </div>
     );
   }
+
+  if (sectionTitle === "person") return showExpandedForm();
 
   return <form>{isExpanded ? showExpandedForm() : showCollapsedForm()}</form>;
 }
