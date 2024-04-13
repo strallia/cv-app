@@ -47,7 +47,7 @@ function Form({
       );
     });
     return (
-      <div className="form--expanded form--bg-color">
+      <div className="form form--expanded form--bg-color">
         {arrOfInputs}
         {sectionTitle !== "person" && (
           <Button

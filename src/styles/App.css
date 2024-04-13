@@ -34,13 +34,39 @@ body {
 
 .edit-section {
   padding: 10px;
-  height: min-content;
   cursor: pointer;
   border: none;
 }
 
+.forms-container--hide-overflow {
+  overflow: hidden;
+}
+
+.forms-container {
+  display: grid;
+  transform-origin: top;
+}
+
+.form {
+  display: grid;
+}
+
+.forms-container--expand {
+  animation: expand 0.4s ease-out;
+}
+
+@keyframes expand {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 form {
   display: grid;
+  outline: 1px solid grey;
 }
 
 .preview-screen {

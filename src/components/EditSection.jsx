@@ -30,36 +30,42 @@ function EditSection({
       );
     });
     return (
-      <>
-        {forms}
-        <Button
-          type="add"
-          buttonText={["add"]}
-          sectionTitle={sectionTitle}
-          data={data}
-          setData={setData}
-          setExpandedEntryID={setExpandedEntryID}
-        />
-      </>
+      <div className="forms-container--hide-overflow">
+        <div className="forms-container forms-container--expand">
+          {forms}
+          <Button
+            type="add"
+            buttonText={["add"]}
+            sectionTitle={sectionTitle}
+            data={data}
+            setData={setData}
+            setExpandedEntryID={setExpandedEntryID}
+          />
+        </div>
+      </div>
     );
   }
 
-  function handleEditSectionClick(e) {
-    if (e.target !== e.currentTarget) return;
+  function handleEditSectionClick() {
+    // if section was already open, close it else open it
     if (expandedEditSection === sectionTitle) return setExpandedEditSection("");
-    setExpandedEntryID("");
     setExpandedEditSection(sectionTitle);
+
+    // close all of its entries
+    setExpandedEntryID("");
   }
 
   return (
-    <section
-      className="edit-section"
-      onClick={(e) => handleEditSectionClick(e)}
-      tabIndex="0"
-    >
-      {sectionTitle}
+    <div>
+      <section
+        className="edit-section"
+        onClick={handleEditSectionClick}
+        tabIndex="0"
+      >
+        {sectionTitle}
+      </section>
       {isExpandedSection && showExpandedSection()}
-    </section>
+    </div>
   );
 }
 
