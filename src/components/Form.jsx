@@ -1,23 +1,29 @@
-import { useState } from "react";
 import { modifyEntry } from "../scripts/helperFunctions";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-function Form({ entry, handleInputOnChange, data, setData }) {
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
+function Form({
+  entry,
+  handleInputOnChange,
+  data,
+  setData,
+  isExpanded,
+  setExpandedEntryID,
+}) {
   const { entryID, degree, school, jobTitle, company } = entry;
   const modifiedEntry = modifyEntry(entry);
   const entryKeyValuePairs = Object.entries(modifiedEntry);
 
   function showCollapsedForm() {
-    const buttonText = [degree, school, jobTitle, company];
+    let buttonText = [degree, school, jobTitle, company].filter(
+      (string) => string
+    );
     const textAsComponents = buttonText.map((string, index) => (
       <p key={index}>{string}</p>
     ));
     return (
       <div
-        onClick={() => setIsCollapsed(false)}
+        onClick={() => setExpandedEntryID(entryID)}
         className="form--collapsed form--bg-color"
       >
         <div>{textAsComponents}</div>
@@ -45,13 +51,13 @@ function Form({ entry, handleInputOnChange, data, setData }) {
         <Button
           type="save"
           buttonText={["save"]}
-          setIsCollapsed={setIsCollapsed}
+          setExpandedEntryID={setExpandedEntryID}
         />
       </div>
     );
   }
 
-  return <form>{isCollapsed ? showCollapsedForm() : showExpandedForm()}</form>;
+  return <form>{isExpanded ? showExpandedForm() : showCollapsedForm()}</form>;
 }
 
 export { Form };

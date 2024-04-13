@@ -4,7 +4,7 @@ function Button({
   setData,
   sectionTitle,
   entryID,
-  setIsCollapsed,
+  setExpandedEntryID,
 }) {
   function handleAddButtonClick() {
     let keyNames =
@@ -16,9 +16,9 @@ function Button({
     const newEntry = { entryID: crypto.randomUUID(), sectionTitle };
     keyNames.forEach((key) => (newEntry[key] = null));
 
-    const dataCopy = [...data];
-    dataCopy.push(newEntry);
-    setData(dataCopy);
+    const updatedData = [...data, newEntry];
+    setData(updatedData);
+    setExpandedEntryID(newEntry.entryID);
   }
 
   function handleDeleteButtonClick() {
@@ -33,8 +33,8 @@ function Button({
   }
 
   function handleSaveButtonClick() {
-    // collapse form
-    setIsCollapsed(true);
+    // collapse all forms
+    setExpandedEntryID("");
   }
 
   let onClickHandler;
