@@ -112,19 +112,6 @@ body {
   outline: 2px solid rgba(var(--light-gray), 1);
 }
 
-.forms-container--expand {
-  animation: expand 0.4s ease-out;
-}
-
-@keyframes expand {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-
 form {
   display: grid;
 }
