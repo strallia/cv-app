@@ -305,6 +305,15 @@ input {
   grid-row: 3/4;
 }
 
+footer {
+  justify-self: center;
+  font-size: 0.9rem;
+  color: rgba(var(--charcoal), 0.5);
+  a {
+    color: inherit;
+  }
+}
+
 @media (min-width: 650px) {
   body {
     padding: 0;
@@ -361,5 +370,8 @@ input {
   }
   .preview-section__entry--description {
     grid-column: 3/4;
+  }
+  footer {
+    grid-column: 2/3;
   }
 }

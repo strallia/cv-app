@@ -68,6 +68,11 @@ function App() {
           />
         </div>
       </div>
+      <footer>
+        <span>
+          created by <a href="https://github.com/strallia">strallia</a>
+        </span>
+      </footer>
     </>
   );
 }
