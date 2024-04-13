@@ -188,7 +188,8 @@ label {
   text-align: end;
 }
 
-input {
+input,
+textarea {
   padding: 3px 7px;
   width: 100%;
   border-radius: 5px;
@@ -305,6 +306,7 @@ input {
 .preview-section__entry--description {
   grid-column: 1/4;
   grid-row: 3/4;
+  text-wrap: wrap;
 }
 
 footer {
@@ -314,6 +316,12 @@ footer {
   a {
     color: inherit;
   }
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+  font-family: sans-serif;
 }
 
 @media (min-width: 650px) {

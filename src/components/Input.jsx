@@ -15,15 +15,26 @@ function Input({ labelText, handleInputOnChange, entryID, initialValue }) {
   return (
     <div className="input-container">
       <label htmlFor={labelText}>{convertCamelToTitleCase(labelText)}</label>
-      <input
-        id={labelText}
-        type="text"
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-          handleInputOnChange(entryID, labelText, e.target.value);
-        }}
-      />
+      {labelText !== "description" ? (
+        <input
+          id={labelText}
+          type="text"
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+            handleInputOnChange(entryID, labelText, e.target.value);
+          }}
+        />
+      ) : (
+        <textarea
+          id={labelText}
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+            handleInputOnChange(entryID, labelText, e.target.value);
+          }}
+        ></textarea>
+      )}
     </div>
   );
 }
