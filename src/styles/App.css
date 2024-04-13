@@ -17,7 +17,6 @@
 
 body {
   background-color: rgba(var(--light-gray), 1);
-  padding-top: 20px;
 }
 
 #root {
@@ -126,7 +125,7 @@ form {
   color: rgba(var(--white), 1);
   display: grid;
   justify-items: center;
-  padding: 10px;
+  padding: 20px 10px;
 }
 
 .preview-header__title {
@@ -159,10 +158,49 @@ form {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  padding: 8px 10px;
+}
+
+.form--collapsed-titles {
+  display: grid;
+  place-content: center;
+  gap: 3px;
+}
+
+.form--collapsed-titles p:first-of-type {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.form--collapsed-titles p:nth-child(2) {
+  text-transform: capitalize;
+  font-size: 0.8rem;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+label {
+  min-width: 80px;
+  text-align: end;
+}
+
+input {
+  padding: 3px 7px;
+  width: 100%;
 }
 
 .form--collapsed:hover {
   background-color: cornflowerblue;
+}
+
+.form--expanded {
+  display: grid;
+  row-gap: 10px;
+  padding: 15px;
 }
 
 .form--bg-color {
@@ -181,6 +219,10 @@ form {
   cursor: pointer;
 }
 
+.button--delete {
+  cursor: pointer;
+}
+
 .button--delete::after {
   content: url(../assets/delete.svg);
 }
@@ -191,6 +233,13 @@ form {
 
 .button--save::after {
   content: "save";
+}
+
+.button--save {
+  width: 100%;
+  justify-self: center;
+  padding: 5px 10px;
+  font-weight: bold;
 }
 
 .edit-section {

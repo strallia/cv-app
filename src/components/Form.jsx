@@ -27,7 +27,7 @@ function Form({
         className="form form--collapsed form--bg-color"
         tabIndex="0"
       >
-        <div>{textAsComponents}</div>
+        <div className="form--collapsed-titles">{textAsComponents}</div>
         <Button type="delete" entryID={entryID} data={data} setData={setData} />
       </div>
     );
