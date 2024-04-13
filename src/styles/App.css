@@ -65,3 +65,15 @@ form {
 .form--bg-color {
   background-color: whitesmoke;
 }
+
+.button--delete::after {
+  content: url(../assets/delete.svg);
+}
+
+.button--add::after {
+  content: url(../assets/add.svg);
+}
+
+.button--save::after {
+  content: "save";
+}

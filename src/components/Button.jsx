@@ -50,9 +50,8 @@ function Button({
         e.preventDefault();
         onClickHandler();
       }}
-    >
-      {type}
-    </button>
+      className={"button--" + type}
+    />
   );
 }
 
