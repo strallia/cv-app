@@ -1,11 +1,4 @@
-function Button({
-  type,
-  data,
-  setData,
-  sectionTitle,
-  entryID,
-  setExpandedEntryID,
-}) {
+function Button({ type, setData, sectionTitle, entryID, setExpandedEntryID }) {
   function handleAddButtonClick() {
     let keyNames =
       sectionTitle === "education"
@@ -16,20 +9,19 @@ function Button({
     const newEntry = { entryID: crypto.randomUUID(), sectionTitle };
     keyNames.forEach((key) => (newEntry[key] = null));
 
-    const updatedData = [...data, newEntry];
-    setData(updatedData);
+    setData((curData) => [...curData, newEntry]);
     setExpandedEntryID(newEntry.entryID);
   }
 
   function handleDeleteButtonClick() {
-    const dataCopy = [...data];
-
-    const indexOfEntryToDelete = dataCopy.findIndex(
-      (entry) => entry.entryID === entryID
-    );
-    dataCopy.splice(indexOfEntryToDelete, 1);
-
-    setData(dataCopy);
+    setData((curData) => {
+      const dataCopy = [...curData];
+      const indexOfEntryToDelete = dataCopy.findIndex(
+        (entry) => entry.entryID === entryID
+      );
+      dataCopy.splice(indexOfEntryToDelete, 1);
+      return dataCopy;
+    });
   }
 
   function handleSaveButtonClick() {

@@ -5,7 +5,6 @@ import { Input } from "./Input";
 function Form({
   entry,
   handleInputOnChange,
-  data,
   setData,
   isExpanded,
   setExpandedEntryID,
@@ -28,7 +27,7 @@ function Form({
         tabIndex="0"
       >
         <div className="form--collapsed-titles">{textAsComponents}</div>
-        <Button type="delete" entryID={entryID} data={data} setData={setData} />
+        <Button type="delete" entryID={entryID} setData={setData} />
       </div>
     );
   }

@@ -5,7 +5,6 @@ import { Form } from "./Form";
 function EditSection({
   sectionTitle,
   sectionEntries,
-  data,
   setData,
   handleInputOnChange,
   expandedEditSection,
@@ -22,7 +21,6 @@ function EditSection({
           key={entry.entryID}
           entry={entry}
           handleInputOnChange={handleInputOnChange}
-          data={data}
           setData={setData}
           isExpanded={isExpanded}
           setExpandedEntryID={setExpandedEntryID}
@@ -37,7 +35,6 @@ function EditSection({
             type="add"
             buttonText={["add"]}
             sectionTitle={sectionTitle}
-            data={data}
             setData={setData}
             setExpandedEntryID={setExpandedEntryID}
           />

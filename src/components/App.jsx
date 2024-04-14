@@ -43,7 +43,6 @@ function App() {
               key={index}
               sectionTitle={sectionTitle}
               sectionEntries={sectionEntries}
-              data={data}
               setData={setData}
               handleInputOnChange={handleInputOnChange}
               expandedEditSection={expandedEditSection}
